@@ -282,11 +282,15 @@ Each evaluation run saves to `outputs/eval/<split>/`:
 
 ## Model Weights
 
-The final trained checkpoint is publicly available for download:
+The trained checkpoints for both model versions are publicly available for download:
 
-**Google Drive:** `<PASTE YOUR GOOGLE DRIVE LINK HERE>`
+**V1 Baseline Model (`best_model.pth`):**
+* **Google Drive Link:** `https://drive.google.com/file/d/1X73qZM3DipW-PTMppKRX_qz23tDYA5_6/view?usp=sharing`
+* **Placement:** Place the downloaded file at `weights/best_model.pth`
 
-Place the downloaded file at: `weights/best_model.pth`
+**V2 Upgraded Model (`best_model_v2.pth`):**
+* **Google Drive Link:** `https://drive.google.com/file/d/15FWCh9vjh-qpnUmt0_fQoSwDenzW34Kh/view?usp=sharing`
+* **Placement:** Place the downloaded file at `weights/best_model_v2.pth`
 
 **Checkpoint contents (V2):**
 
