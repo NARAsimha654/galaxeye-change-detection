@@ -1,0 +1,60 @@
+# ── GalaxEye EO-SAR Change Detection — Config v2 ─────────────────────────────
+# Enhanced training: DualEncoderUNetV2 + instance norm + domain augmentation
+# + Focal + Dice + Lovász loss + auxiliary supervision
+
+data:
+  root: "data"
+  image_size: 512
+  num_workers: 4
+
+model:
+  architecture: "dual_encoder_unet_v2"
+  encoder: "resnet34"
+  encoder_weights: "imagenet"
+  decoder_channels: [256, 128, 64, 32, 16]
+
+training:
+  epochs: 80
+  batch_size: 4 # reduced from 8 — v2 uses more VRAM
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  optimizer: "adamw"
+  scheduler: "cosine"
+  scheduler_min_lr: 0.0000005
+  gradient_clip: 0.5
+  seed: 42
+  mixed_precision: true
+
+loss:
+  focal_weight: 0.4
+  dice_weight: 0.3
+  lovasz_weight: 0.3
+  focal_gamma: 2.0
+  focal_alpha: 0.75
+
+sampling:
+  change_oversample_ratio: 0.7
+
+augmentation:
+  eo_brightness_limit: 0.3
+  eo_contrast_limit: 0.3
+  sar_speckle_noise: 0.05
+
+# normalization block kept for compatibility but NOT used in v2
+# v2 uses per-image instance normalization instead
+normalization:
+  eo_mean: [84.504, 91.558, 71.558]
+  eo_std: [51.559, 40.504, 38.178]
+  sar_mean: [52.051]
+  sar_std: [39.075]
+
+evaluation:
+  metric: "f1"
+  save_dir: "weights"
+  log_dir: "outputs/runs_v2"
+
+label_remap:
+  0: 0
+  1: 0
+  2: 1
+  3: 1

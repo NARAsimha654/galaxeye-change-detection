@@ -1,0 +1,37 @@
+# Data and weights (DO NOT COMMIT)
+data/
+weights/
+
+# Model outputs and logs
+outputs/
+logs/
+*.log
+
+# Python Virtual Environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary assignment files
+pdf_text.txt
